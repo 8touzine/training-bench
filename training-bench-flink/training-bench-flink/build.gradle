@@ -50,6 +50,14 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'org.apache.avro:avro:1.11.1'
+    implementation 'org.apache.flink:flink-connector-kafka:1.16.0'
+    implementation "io.confluent:kafka-avro-serializer:7.5.0"
+    implementation "io.confluent:kafka-schema-registry-client:7.5.0"
+    compileOnly("org.projectlombok:lombok:1.18.38")
+    annotationProcessor("org.projectlombok:lombok:1.18.38")
+
+    testCompileOnly("org.projectlombok:lombok:1.18.38")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.38")
 }
 sourceSets {
     main.compileClasspath += configurations.flinkShadowJar

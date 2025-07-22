@@ -3,6 +3,7 @@ package org.eighttouzin.configuration;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.GlobalConfiguration;
 
+
 public class Config {
 
     //private static final String membersInTopic = "training_bench_connect.public.members";

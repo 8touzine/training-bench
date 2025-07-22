@@ -19,3 +19,5 @@ rest.port: 8082
 # kafka
 bootstrap.servers: broker:9092
 schema.registery.url: http://schema-registry:8081
+group.id: training-bench-consumer
+topic.member.in:  training_bench_connect.public.members
