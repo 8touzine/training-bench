@@ -12,7 +12,7 @@ mainClassName = 'org.eighttouzin.DataStreamJob'
 description = """Flink training bench Start Job"""
 ext {
     javaVersion = '1.8'
-    flinkVersion = '1.15.3'
+    flinkVersion = '1.20.2'
     scalaBinaryVersion = '_2.12'
     slf4jVersion = '1.7.36'
     log4jVersion = '2.17.1'
@@ -51,12 +51,17 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'org.apache.avro:avro:1.11.1'
-    implementation 'org.apache.flink:flink-connector-kafka:1.16.0'
+    implementation 'org.apache.flink:flink-connector-kafka:1.17.2'
+    implementation "org.apache.flink:flink-connector-base:${flinkVersion}"
     implementation "io.confluent:kafka-avro-serializer:6.1.0"
     implementation "io.confluent:kafka-schema-registry-client:7.5.0"
+    // https://mvnrepository.com/artifact/org.apache.flink/flink-avro-confluent-registry
+    implementation "org.apache.flink:flink-avro-confluent-registry:${flinkVersion}"
     compileOnly("org.projectlombok:lombok:1.18.38")
     annotationProcessor("org.projectlombok:lombok:1.18.38")
-
+    implementation "io.confluent:kafka-streams-avro-serde:6.1.0"
+    implementation "org.apache.flink:flink-connector-kafka-confluent:${flinkVersion}"
+    testImplementation 'org.mockito:mockito-core:2.1.0'
     testCompileOnly("org.projectlombok:lombok:1.18.38")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.38")
 }
@@ -80,4 +85,9 @@ avro {
 
 shadowJar {
     configurations = [project.configurations.flinkShadowJar]
+}
+
+test {
+    maxParallelForks = 3
+    useJUnitPlatform()
 }
