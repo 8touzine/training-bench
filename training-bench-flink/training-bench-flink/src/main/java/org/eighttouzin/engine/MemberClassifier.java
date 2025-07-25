@@ -21,7 +21,7 @@ public class MemberClassifier implements FlatMapFunction<Tuple2<Key, Envelope>, 
                 keyEnvelopeTuple2.f1.setOp("CREATE_EVENT");
                 break;
             case "u":
-                keyEnvelopeTuple2.f1.setOp("UPDATE_EVENT");
+                keyEnvelopeTuple2.f1.setOp("CHANGE_EVENT");
                 break;
             case "r":
                 keyEnvelopeTuple2.f1.setOp("DELETE_EVENT");

@@ -4,6 +4,7 @@ plugins {
     //shadow jar:
     id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'com.github.davidmc24.gradle.plugin.avro' version '1.9.1'
+    id("com.github.imflog.kafka-schema-registry-gradle-plugin") version "2.3.3"
 }
 
 group = 'org.eighttouzin'
@@ -24,8 +25,24 @@ tasks.withType(JavaCompile) {
 }
 applicationDefaultJvmArgs = ["-Dlog4j.configurationFile=log4j2.properties"]
 
+schemaRegistry  {
+    //url = 'http://schema-registry:8081'
+    url = 'http://localhost:8081'
+    register {
+        subject('training_bench_connect.public.members-created-key-and-value',
+                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+
+        subject('training_bench_connect.public.members-changed-key-and-value',
+                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+
+        subject('training_bench_connect.public.members-deleted-key-and-value',
+                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+    }
+}
+
 repositories {
     mavenCentral()
+    gradlePluginPortal()
     maven {
         url "https://repository.apache.org/content/repositories/snapshots"
         mavenContent {
@@ -34,6 +51,7 @@ repositories {
     }
     maven { url "https://packages.confluent.io/maven" }
 }
+
 configurations {
     flinkShadowJar // dependencies which go into the shadowJar
     // always exclude these (also from transitive dependencies) since they are provided by Flink
@@ -51,19 +69,23 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'org.apache.avro:avro:1.11.1'
-    implementation 'org.apache.flink:flink-connector-kafka:1.17.2'
+    // https://mvnrepository.com/artifact/org.apache.flink/flink-connector-kafka
+    implementation 'org.apache.flink:flink-connector-kafka:3.2.0-1.19'
     implementation "org.apache.flink:flink-connector-base:${flinkVersion}"
     implementation "io.confluent:kafka-avro-serializer:6.1.0"
     implementation "io.confluent:kafka-schema-registry-client:7.5.0"
+    implementation "io.confluent:kafka-schema-registry:7.9.0"
     // https://mvnrepository.com/artifact/org.apache.flink/flink-avro-confluent-registry
     implementation "org.apache.flink:flink-avro-confluent-registry:${flinkVersion}"
     compileOnly("org.projectlombok:lombok:1.18.38")
     annotationProcessor("org.projectlombok:lombok:1.18.38")
     implementation "io.confluent:kafka-streams-avro-serde:6.1.0"
-    implementation "org.apache.flink:flink-connector-kafka-confluent:${flinkVersion}"
+    //implementation "org.apache.flink:flink-connector-kafka-confluent:${flinkVersion}"
     testImplementation 'org.mockito:mockito-core:2.1.0'
     testCompileOnly("org.projectlombok:lombok:1.18.38")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.38")
+    implementation "org.apache.flink:flink-connector-kafka:${flinkVersion}"
+    implementation "io.confluent:kafka-avro-serializer:7.5.0"
 }
 sourceSets {
     main.compileClasspath += configurations.flinkShadowJar

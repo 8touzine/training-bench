@@ -19,6 +19,12 @@ rest.port: 8082
 # kafka
 bootstrap.servers: broker:9092
 schema.registery.url: http://schema-registry:8081
-topic.members.in: training_bench_connect.public.members
-topic.members.out: training_bench_connect.public.members.events
 #sessions, workouts will come here:
+group.id: training-bench-consumer
+topic.member.in:  training_bench_connect.public.members
+topic.member.out.created:  training_bench_connect.public.members-created
+topic.member.out.changed:  training_bench_connect.public.members-changed
+topic.member.out.deleted:  training_bench_connect.public.members-deleted
+subject.created: training_bench_connect.public.members-created-key-and-value
+subject.changed: training_bench_connect.public.members-changed-key-and-value
+subject.deleted: training_bench_connect.public.members-deleted-key-and-value

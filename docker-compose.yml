@@ -88,7 +88,7 @@ services:
       - "8082:8081"
     command: jobmanager
     volumes: 
-      - ./training-bench-flink/training-bench-flink/config:/opt/flink/conf/config.yaml
+      - ./training-bench-flink/training-bench-flink/config/flink-conf.yaml:/opt/flink/conf/flink-conf.yaml
     environment:
       - |
         FLINK_PROPERTIES=
@@ -101,7 +101,7 @@ services:
     command: taskmanager
     scale: 1    
     volumes: 
-      - ./training-bench-flink/training-bench-flink/config:/opt/flink/conf/config.yaml
+      - ./training-bench-flink/training-bench-flink/config/flink-conf.yaml:/opt/flink/conf/flink-conf.yaml
     environment:
       - |
         FLINK_PROPERTIES=

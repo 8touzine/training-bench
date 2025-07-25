@@ -1,13 +1,10 @@
 package org.eighttouzin.configuration;
 
-import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.connector.base.DeliveryGuarantee;
 import org.apache.flink.connector.kafka.sink.KafkaRecordSerializationSchema;
 import org.apache.flink.connector.kafka.sink.KafkaSink;
-import org.apache.flink.formats.avro.registry.confluent.ConfluentRegistryAvroDeserializationSchema;
 import org.apache.flink.formats.avro.registry.confluent.ConfluentRegistryAvroSerializationSchema;
-import org.apache.flink.streaming.connectors.kafka.KafkaSerializationSchema;
 import training_bench_connect.public$.members.KeyAndEnvelope;
 
 public class SinkConfig {
@@ -21,7 +18,7 @@ public class SinkConfig {
                         .setValueSerializationSchema(
                                 ConfluentRegistryAvroSerializationSchema.forSpecific(
                                         KeyAndEnvelope.class,
-                                        "created_member-value",
+                                        config.getString("subject.created", ""),
                                         config.getString("schema.registery.url", "")
                                 )
                         )
@@ -38,7 +35,7 @@ public class SinkConfig {
                         .setValueSerializationSchema(
                                 ConfluentRegistryAvroSerializationSchema.forSpecific(
                                         KeyAndEnvelope.class,
-                                        "changed_member-value",
+                                        config.getString("subject.changed", ""),
                                         config.getString("schema.registery.url", "")
                                 )
                         )
@@ -55,7 +52,7 @@ public class SinkConfig {
                         .setValueSerializationSchema(
                                 ConfluentRegistryAvroSerializationSchema.forSpecific(
                                         KeyAndEnvelope.class,
-                                        "deleted_member-value",
+                                        config.getString("subject.deleted", ""),
                                         config.getString("schema.registery.url", "")
                                 )
                         )

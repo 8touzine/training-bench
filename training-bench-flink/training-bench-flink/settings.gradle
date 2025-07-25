@@ -1,2 +1,18 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven {
+            url "https://repository.apache.org/content/repositories/snapshots"
+            mavenContent {
+                snapshotsOnly()
+            }
+        }
+        maven {
+            url "https://packages.confluent.io/maven"
+        }
+    }
+}
+
 rootProject.name = 'training-bench-flink'
 
