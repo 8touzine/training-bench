@@ -6,9 +6,11 @@ import org.apache.avro.specific.SpecificRecord;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeHint;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
+import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDeserializationSchema;
+import org.apache.flink.formats.avro.typeutils.AvroTypeInfo;
 import org.apache.flink.util.Collector;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import training_bench_connect.public$.members.Envelope;
@@ -53,8 +55,10 @@ public class AvroDeserialiszationSchema implements KafkaRecordDeserializationSch
         out.collect(Tuple2.of(key, envelope));
     }
 
+
+
     @Override
     public TypeInformation<Tuple2<Key, Envelope>> getProducedType() {
-        return TypeInformation.of(new TypeHint<Tuple2<Key, Envelope>>() {});
+        return Types.TUPLE(AvroTypeInfo.of(Key.class), AvroTypeInfo.of(Envelope.class));
     }
 }

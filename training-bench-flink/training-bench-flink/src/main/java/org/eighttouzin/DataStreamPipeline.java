@@ -3,6 +3,7 @@ package org.eighttouzin;
 import lombok.AllArgsConstructor;
 import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
+import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.connector.kafka.sink.KafkaSink;
 import org.apache.flink.connector.kafka.source.KafkaSource;
@@ -32,10 +33,12 @@ public class DataStreamPipeline {
         );
 
 
+
         SingleOutputStreamOperator<KeyAndEnvelope>
                 classifiedMember =
                 members
                 .flatMap(new MemberClassifier())
+                        .returns(TypeInformation.of(KeyAndEnvelope.class))
                         .uid("enrich eventType field");
 
         DataStream<KeyAndEnvelope> memberCreated = classifiedMember

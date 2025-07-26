@@ -6,6 +6,7 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.connector.kafka.sink.KafkaSink;
 import org.apache.flink.connector.kafka.source.KafkaSource;
+import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.eighttouzin.configuration.Config;
 import org.eighttouzin.configuration.SinkConfig;
@@ -38,6 +39,7 @@ public class DataStreamJob {
                 .setTopics(config.getString("topic.member.in", ""))
                 .setGroupId(config.getString("group.id", ""))
                 .setDeserializer(new AvroDeserialiszationSchema(config))
+                .setStartingOffsets(OffsetsInitializer.earliest())
                 .build();
 
 
