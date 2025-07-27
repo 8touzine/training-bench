@@ -1,30 +1,22 @@
-#flink
-#job manager
-jobmanager.rpc.address: jobmanager
-jobmanager.rpc.port: 6123
-jobmanager.heap.size: 1024m
-
-#task manager
-taskmanager.heap.size: 1024m
-taskmanager.numberOfTaskSlots: 2
-
-#general
-parallelism.default: 2
-state.backend: filesystem
-state.checkpoints.dir: file:///tmp/flink-checkpoints
-state.savepoints.dir: file:///tmp/flink-savepoints
-
-#ui j'ai le port changé car 8081 deja pris
-rest.port: 8082
-# kafka
-bootstrap.servers: broker:9092
+blob.server.port: 6124
+topic.member.out.deleted: training_bench_connect.public.members-deleted
 schema.registery.url: http://schema-registry:8081
-#sessions, workouts will come here:
 group.id: training-bench-consumer
-topic.member.in:  training_bench_connect.public.members
-topic.member.out.created:  training_bench_connect.public.members-created
-topic.member.out.changed:  training_bench_connect.public.members-changed
-topic.member.out.deleted:  training_bench_connect.public.members-deleted
+jobmanager.rpc.address: jobmanager
+bootstrap.servers: broker:9092
 subject.created: training_bench_connect.public.members-created-key-and-value
+state.savepoints.dir: file:///tmp/flink-savepoints
+jobmanager.rpc.port: 6123
+query.server.port: 6125
+rest.port: 8082
+topic.member.in: training_bench_connect.public.members
+parallelism.default: 2
+taskmanager.numberOfTaskSlots: 2
+topic.member.out.changed: training_bench_connect.public.members-changed
+topic.member.out.created: training_bench_connect.public.members-created
+state.backend: filesystem
 subject.changed: training_bench_connect.public.members-changed-key-and-value
+taskmanager.heap.size: 1024m
+jobmanager.heap.size: 1024m
+state.checkpoints.dir: file:///tmp/flink-checkpoints
 subject.deleted: training_bench_connect.public.members-deleted-key-and-value

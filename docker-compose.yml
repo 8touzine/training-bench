@@ -83,25 +83,27 @@ services:
     volumes:
       - ./confluentinc-kafka-connect-avro-converter/lib:/kafka/connect/libs
   jobmanager:
-    image: flink:latest
+ #   build: 
+ #       context: .
+    image: flink:1.20.2
     ports:
       - "8082:8081"
     command: jobmanager
     volumes: 
-      - ./training-bench-flink/training-bench-flink/config/flink-conf.yaml:/opt/flink/conf/flink-conf.yaml
+      - ./training-bench-flink/training-bench-flink/conf/config.yaml:/opt/flink/conf/config.yaml
     environment:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager        
 
   taskmanager:
-    image: flink:latest
+    image: flink:1.20.2
     depends_on:
       - jobmanager
     command: taskmanager
     scale: 1    
     volumes: 
-      - ./training-bench-flink/training-bench-flink/config/flink-conf.yaml:/opt/flink/conf/flink-conf.yaml
+      - ./training-bench-flink/training-bench-flink/conf/config.yaml:/opt/flink/conf/config.yaml
     environment:
       - |
         FLINK_PROPERTIES=

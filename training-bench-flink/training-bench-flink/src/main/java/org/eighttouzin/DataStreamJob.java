@@ -34,8 +34,10 @@ public class DataStreamJob {
         changedMemberSink = SinkConfig.getChangeeSink();
         deletedEventSink = SinkConfig.getDeletedSink();
 
+        System.out.println("bootstrap kafka: " + config.getString("bootstrap.servers", ""));
+
         KafkaSource<Tuple2<Key, Envelope>> source = KafkaSource.<Tuple2<Key, Envelope>>builder()
-                .setBootstrapServers(config.getString("bootstrap.servers", ""))
+                .setBootstrapServers(config.getString("bootstrap.servers", "localhost:29092"))
                 .setTopics(config.getString("topic.member.in", ""))
                 .setGroupId(config.getString("group.id", ""))
                 .setDeserializer(new AvroDeserialiszationSchema(config))

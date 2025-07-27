@@ -15,6 +15,8 @@ public class Config {
         if(flinkConfDir == null){
             flinkConfDir =  "conf";
         }
+        System.out.println("flikdir=  " + flinkConfDir);
+
         return GlobalConfiguration.loadConfiguration(flinkConfDir);
     }
 
