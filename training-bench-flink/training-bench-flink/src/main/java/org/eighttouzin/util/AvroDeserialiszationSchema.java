@@ -33,10 +33,13 @@ public class AvroDeserialiszationSchema implements KafkaRecordDeserializationSch
 
     @Override
     public void open(DeserializationSchema.InitializationContext context) throws Exception {
+
         Map<String, Object> configuration = new HashMap<>();
-        configuration.put("schema.registry.url", config.getString("schema.registery.url", "" +
+        configuration.put("schema.registry.url", config.getString("schema.registry.url",
                 "http://schema-registry:8081"));
         configuration.put("specific.avro.reader", true);
+        configuration.put("key.subject.name.strategy", "io.confluent.kafka.serializers.subject.RecordNameStrategy");
+        configuration.put("value.subject.name.strategy", "io.confluent.kafka.serializers.subject.RecordNameStrategy");
 
         keyDeserializer = new KafkaAvroDeserializer();
         keyDeserializer.configure(configuration, true); //isKey -> true

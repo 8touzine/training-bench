@@ -36,7 +36,7 @@ public class SinkConfig {
                                 ConfluentRegistryAvroSerializationSchema.forSpecific(
                                         KeyAndEnvelope.class,
                                         config.getString("subject.changed", ""),
-                                        config.getString("schema.registery.url", "")
+                                        config.getString("schema.registry.url", "")
                                 )
                         )
                         .build())
