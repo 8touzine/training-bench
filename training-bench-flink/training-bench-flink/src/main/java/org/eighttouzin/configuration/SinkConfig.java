@@ -19,7 +19,7 @@ public class SinkConfig {
                                 ConfluentRegistryAvroSerializationSchema.forSpecific(
                                         KeyAndEnvelope.class,
                                         config.getString("subject.created", ""),
-                                        config.getString("schema.registery.url", "")
+                                        config.getString("schema.registry.url", "")
                                 )
                         )
                         .build())
@@ -53,7 +53,7 @@ public class SinkConfig {
                                 ConfluentRegistryAvroSerializationSchema.forSpecific(
                                         KeyAndEnvelope.class,
                                         config.getString("subject.deleted", ""),
-                                        config.getString("schema.registery.url", "")
+                                        config.getString("schema.registry.url", "")
                                 )
                         )
                         .build())

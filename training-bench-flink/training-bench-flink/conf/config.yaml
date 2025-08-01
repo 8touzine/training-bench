@@ -28,6 +28,10 @@ group:
   id: training-bench-consumer
 bootstrap:
   servers: broker:29092
+subject:
+  created: training_bench_connect.public.members-created-key-and-value
+  changed: training_bench_connect.public.members-changed-key-and-value
+  deleted: training_bench_connect.public.members-deleted-key-and-value
 query:
   server:
     port: '6125'
@@ -37,10 +41,6 @@ rest:
 schema:
   registry:
     url: http://schema-registry:8081
-subject:
-  created: training_bench_connect.public.members-created-key-and-value
-  changed: training_bench_connect.public.members-changed-key-and-value
-  deleted: training_bench_connect.public.members-deleted-key-and-value
 parallelism:
   default: 1
 env:
