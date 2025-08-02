@@ -39,6 +39,9 @@ schemaRegistry  {
 
         subject('training_bench_connect.public.members-deleted-key-and-value',
                 'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+
+        subject('training_bench_connect.public.members-created-value',
+                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
     }
 }
 applicationDefaultJvmArgs = ["-Dlog4j.configurationFile=log4j.properties"]

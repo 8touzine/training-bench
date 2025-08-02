@@ -54,7 +54,7 @@ services:
         - 5432:5432
     environment:
       - POSTGRES_USER=saza
-      - POSTGRES_PASSWORD=mizer
+      - POSTGRES_PASSWORD=${POSTRGRES_PWD}
       - POSTGRES_DB=traingbench
  
   dbz:
@@ -79,9 +79,10 @@ services:
       CONNECT_REST_ADVERTISED_HOST_NAME: debezium
       CONNECT_PLUGIN_PATH: /kafka/connect/
       
-
+  #sous dossiers sinon l'un va ecraser l'autre
     volumes:
-      - ./confluentinc-kafka-connect-avro-converter/lib:/kafka/connect/libs
+      - ./confluentinc-kafka-connect-avro-converter/lib:/kafka/connect/libs/avro-converter
+      - ./confluentinc-kafka-connect-elasticsearch-15.0.1/lib:/kafka/connect/libs/connect-elasticsearch
   jobmanager:
  #   build: 
  #       context: .
@@ -109,4 +110,51 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 2          
-    
+  elasticsearch:
+    image: elasticsearch:9.0.4
+    ports:
+      - 9200:9200
+    environment:
+      discovery.type: 'single-node'
+      xpack.security.enabled: 'true'
+      ##username: elastic
+      ELASTIC_PASSWORD: ${ELASTIC_PWD}
+      ES_JAVA_OPTS: '-Xmx2g -Xms2g'
+  kibana:
+    image: kibana:9.0.4
+    ports:
+      - 5601:5601
+    volumes:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+  # kafka-connect:
+  #   image: confluentinc/cp-kafka-connect:7.2.15
+  #   container_name: kafka-connect
+  #   depends_on:
+  #     - broker
+  #     - elasticsearch
+  #   ports:
+  #     - 8084:8083
+  #   volumes:
+  #     - $PWD/connect-plugins:/connect-plugins
+  #   environment:
+  #     CONNECT_BOOTSTRAP_SERVERS: broker:9092
+  #     CONNECT_REST_PORT: 8083
+  #     CONNECT_GROUP_ID: 'connect'
+  #     CONNECT_CONFIG_STORAGE_TOPIC: kafka-connect-config
+  #     CONNECT_OFFSET_STORAGE_TOPIC: kafka-connect-offsets
+  #     CONNECT_STATUS_STORAGE_TOPIC: kafka-connect-status
+  #     CONNECT_REPLICATION_FACTOR: 1
+  #     CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+  #     CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+  #     CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+  #     # CONNECT_KEY_CONVERTER: 'org.apache.kafka.connect.json.JsonConverter'
+  #     CONNECT_KEY_CONVERTER: 'org.apache.kafka.connect.storage.StringConverter'
+  #     CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE: 'false'
+  #     CONNECT_VALUE_CONVERTER: 'org.apache.kafka.connect.json.JsonConverter'
+  #     CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: 'false'
+  #     # CONNECT_INTERNAL_KEY_CONVERTER: 'org.apache.kafka.connect.json.JsonConverter'
+  #     CONNECT_INTERNAL_KEY_CONVERTER: 'org.apache.kafka.connect.storage.StringConverter'
+  #     CONNECT_INTERNAL_VALUE_CONVERTER: 'org.apache.kafka.connect.json.JsonConverter'
+  #     CONNECT_PRODUCER_INTERCEPTOR_CLASSES: 'io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor'
+  #     CONNECT_CONSUMER_INTERCEPTOR_CLASSES: 'io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor'
+  #     CONNECT_REST_ADVERTISED_HOST_NAME: 'connect'

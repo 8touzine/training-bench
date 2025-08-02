@@ -1,0 +1,10 @@
+#connection from remote users
+server.host: "0.0.0.0"
+
+#point sur notre containeur, 
+#comme docker-compose on utilise routing fait donc utilisation de nom
+elasticsearch.hosts: ["http://elasticsearch:9200"]
+
+#utilisé par kibana pour connect et maintenance d'elasticsearch
+elasticsearch.username: "kibana_system"
+elasticsearch.password: "mimizer"
