@@ -111,7 +111,7 @@ services:
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 2          
   elasticsearch:
-    image: elasticsearch:9.0.4
+    image: elasticsearch:8.12.0
     ports:
       - 9200:9200
     environment:
@@ -121,7 +121,7 @@ services:
       ELASTIC_PASSWORD: ${ELASTIC_PWD}
       ES_JAVA_OPTS: '-Xmx2g -Xms2g'
   kibana:
-    image: kibana:9.0.4
+    image: kibana:8.12.0
     ports:
       - 5601:5601
     volumes:

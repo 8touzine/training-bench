@@ -31,17 +31,31 @@ schemaRegistry  {
     //url = 'http://schema-registry:8081'
     url = 'http://localhost:8081'
     register {
-        subject('training_bench_connect.public.members-created-key-and-value',
-                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+//        subject('training_bench_connect.public.members-created-key-and-value',
+//                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+//
+//        subject('training_bench_connect.public.members-changed-key-and-value',
+//                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+//
+//        subject('training_bench_connect.public.members-deleted-key-and-value',
+//                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+        //register serialization schemas
+//        subject('training_bench_connect.public.members.Value',
+//                'src/main/avro/member-value.avsc', 'AVRO')
+//
+//        subject('training_bench_connect.public.members.Key',
+//                'src/main/avro/member-key.avsc', 'AVRO')
+        subject('training_bench_connect.public.members-created.Key',
+            'src/main/avro/member-key.avsc', 'AVRO')
 
-        subject('training_bench_connect.public.members-changed-key-and-value',
-                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+        subject('training_bench_connect.public.members-created.Envelope',
+            'src/main/avro/member-value.avsc', 'AVRO')
 
-        subject('training_bench_connect.public.members-deleted-key-and-value',
-                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+        subject('members-changed-value',
+                'src/main/avro/member-value.avsc', 'AVRO')
 
-        subject('training_bench_connect.public.members-created-value',
-                'src/main/avro/KeyAndEnvelope.avsc', 'AVRO')
+        subject('members-deleted-value',
+                'src/main/avro/member-value.avsc', 'AVRO')
     }
 }
 applicationDefaultJvmArgs = ["-Dlog4j.configurationFile=log4j.properties"]
