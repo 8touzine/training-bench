@@ -1,16 +1,16 @@
 {
   "type": "record",
   "name": "Key",
-  "namespace": "training_bench_connect.public.members",
+  "namespace": "training_bench_connect_v2.public.members",
   "fields": [
     {
       "name": "id",
       "type": {
-        "type": "int",
+        "type": "long",
         "connect.default": 0
       },
       "default": 0
     }
   ],
-  "connect.name": "training_bench_connect.public.members.Key"
+  "connect.name": "training_bench_connect_v2.public.members.Key"
 }

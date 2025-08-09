@@ -11,10 +11,9 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.eighttouzin.configuration.Config;
 import org.eighttouzin.configuration.SinkConfig;
 import org.eighttouzin.util.AvroDeserialiszationSchema;
-import training_bench_connect.public$.members.Envelope;
-import training_bench_connect.public$.members.Key;
-import training_bench_connect.public$.members.KeyAndEnvelope;
-import training_bench_connect.public$.members.Value;
+import training_bench_connect_v2.public$.members.Envelope;
+import training_bench_connect_v2.public$.members.Key;
+import training_bench_connect_v2.public$.members.KeyAndEnvelope;
 
 
 public class DataStreamJob {

@@ -13,8 +13,8 @@ import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDe
 import org.apache.flink.formats.avro.typeutils.AvroTypeInfo;
 import org.apache.flink.util.Collector;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import training_bench_connect.public$.members.Envelope;
-import training_bench_connect.public$.members.Key;
+import training_bench_connect_v2.public$.members.Envelope;
+import training_bench_connect_v2.public$.members.Key;
 
 import java.util.HashMap;
 import java.util.Map;

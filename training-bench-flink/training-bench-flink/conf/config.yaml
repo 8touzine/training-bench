@@ -7,7 +7,7 @@ topic:
       deleted: training_bench_connect.public.members-deleted
       changed: training_bench_connect.public.members-changed
       created: training_bench_connect_public_members-created
-    in: training_bench_connect.public.members
+    in: training_bench_connect_v2.public.members
 jobmanager:
   execution:
     failover-strategy: region

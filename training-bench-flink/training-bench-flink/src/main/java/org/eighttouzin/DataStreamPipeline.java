@@ -12,9 +12,9 @@ import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kafka.table.KafkaDynamicSink;
 import org.eighttouzin.engine.MemberClassifier;
-import training_bench_connect.public$.members.Envelope;
-import training_bench_connect.public$.members.Key;
-import training_bench_connect.public$.members.KeyAndEnvelope;
+import training_bench_connect_v2.public$.members.Envelope;
+import training_bench_connect_v2.public$.members.Key;
+import training_bench_connect_v2.public$.members.KeyAndEnvelope;
 
 @AllArgsConstructor
 public class DataStreamPipeline {

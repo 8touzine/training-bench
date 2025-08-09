@@ -17,8 +17,8 @@ import org.apache.flink.connector.kafka.sink.KafkaSink;
 import org.apache.flink.formats.avro.registry.confluent.ConfluentRegistryAvroSerializationSchema;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.jetbrains.annotations.NotNull;
-import training_bench_connect.public$.members.Envelope;
-import training_bench_connect.public$.members.KeyAndEnvelope;
+import training_bench_connect_v2.public$.members.Envelope;
+import training_bench_connect_v2.public$.members.KeyAndEnvelope;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

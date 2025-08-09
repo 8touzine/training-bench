@@ -6,9 +6,9 @@ import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction;
 import org.apache.flink.util.Collector;
-import training_bench_connect.public$.members.Envelope;
-import training_bench_connect.public$.members.Key;
-import training_bench_connect.public$.members.KeyAndEnvelope;
+import training_bench_connect_v2.public$.members.Envelope;
+import training_bench_connect_v2.public$.members.Key;
+import training_bench_connect_v2.public$.members.KeyAndEnvelope;
 
 public class MemberClassifier implements FlatMapFunction<Tuple2<Key, Envelope>, KeyAndEnvelope> {
 

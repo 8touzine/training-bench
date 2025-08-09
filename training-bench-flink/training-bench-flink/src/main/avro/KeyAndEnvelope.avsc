@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "KeyAndEnvelope",
-  "namespace": "training_bench_connect.public.members",
+  "namespace": "training_bench_connect_v2.public.members",
   "fields": [
     {
       "name": "key",
@@ -10,18 +10,18 @@
         {
           "type": "record",
           "name": "Key",
-          "namespace": "training_bench_connect.public.members",
+          "namespace": "training_bench_connect_v2.public.members",
           "fields": [
             {
               "name": "id",
               "type": {
-                "type": "int",
+                "type": "long",
                 "connect.default": 0
               },
               "default": 0
             }
           ],
-          "connect.name": "training_bench_connect.public.members.Key"
+          "connect.name": "training_bench_connect_v2.public.members.Key"
         }
       ],
       "default": null
@@ -32,7 +32,7 @@
         {
           "type": "record",
           "name": "Envelope",
-          "namespace": "training_bench_connect.public.members",
+          "namespace": "training_bench_connect_v2.public.members",
           "fields": [
             {
               "name": "before",
@@ -45,7 +45,7 @@
                     {
                       "name": "id",
                       "type": {
-                        "type": "int",
+                        "type": "long",
                         "connect.default": 0
                       },
                       "default": 0
@@ -83,7 +83,7 @@
                       "default": true
                     }
                   ],
-                  "connect.name": "training_bench_connect.public.members.Value"
+                  "connect.name": "training_bench_connect_v2.public.members.Value"
                 }
               ],
               "default": null
@@ -258,11 +258,11 @@
             }
           ],
           "connect.version": 2,
-          "connect.name": "training_bench_connect.public.members.Envelope"
+          "connect.name": "training_bench_connect_v2.public.members.Envelope"
         }
       ],
       "default": null
     }
   ],
-  "connect.name": "training_bench_connect.public.members.Key"
+  "connect.name": "training_bench_connect_v2.public.members.Key"
 }
