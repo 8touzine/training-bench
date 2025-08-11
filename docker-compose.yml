@@ -136,3 +136,11 @@ services:
       - broker
       - elasticsearch  
       - postgres
+  UI:
+    build:
+      context: ./UI/training-bench/
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - api
