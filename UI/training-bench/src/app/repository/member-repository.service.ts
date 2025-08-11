@@ -19,7 +19,8 @@ export class MemberRepositoryService {
       nom: member.getName(),
       email: member.getEmail()
     }
-    return this.httpClient.post<Member>(url, body)
+    console.log("OK ", body, "url: ", url);
+    return this.httpClient.post<Member>(url, body).subscribe();
   }
 
 }

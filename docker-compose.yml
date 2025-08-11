@@ -132,3 +132,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8084:8084
+    depends_on:
+      - broker
+      - elasticsearch  
+      - postgres

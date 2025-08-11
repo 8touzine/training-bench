@@ -33,6 +33,8 @@ export class MemberFormComponent {
     let member = new Member(name, email);
     this.memberService.registerMember(member);
     this.snackBar.open("member created", 'ok');
+    name = '';
+    email = '';
   }
 
 }

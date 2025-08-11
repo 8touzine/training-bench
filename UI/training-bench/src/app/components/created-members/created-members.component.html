@@ -3,16 +3,25 @@
   <mat-card-header>
     <mat-card-title><span style="color: aliceblue;">created members events</span></mat-card-title>
     <mat-card-subtitle>real-time event from elastic</mat-card-subtitle>
+      
   </mat-card-header>
+  <mat-card-subtitle>
+    <div class="fixedBtn">
+    <button mat-stroked-button (click)="loadData()" matButton="outlined">Refresh</button>        
+  </div></mat-card-subtitle>
 <mat-card-content>
-<!--     <mat-list role="list">
-        <ng-template *ngFor="let member in members$">
-        <mat-list-item  role="listitem">"nom: " {{member.nom}}, 'email '+ {{member.email}}</mat-list-item>
-        </ng-template>
-        
-    </mat-list> -->
+     <mat-list role="list">
+       
+        <mat-list-item  role="listitem" *ngFor="let member of members$ | async">
+          <span class="label"> nom: </span>  <span class="value">{{member.after.nom}}</span><br>
+           <span class="label">email: </span> <span class="value">{{member.after.email}}</span> <br>
+        <span class="label">timestamp: </span> <span class="value">{{member.after.timestamp}}</span></mat-list-item>
+           
+    </mat-list> 
 </mat-card-content>
-</mat-card>
+</mat-card> 
+
+  
 
 
 
