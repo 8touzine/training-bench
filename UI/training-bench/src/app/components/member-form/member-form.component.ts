@@ -30,9 +30,7 @@ export class MemberFormComponent {
   }
 
   createMember(name: string, email: string){
-    let member!: Member ; 
-    member.nom = name;
-    member.email = email;
+    let member = new Member(name, email);
     this.memberService.registerMember(member);
     this.snackBar.open("member created", 'ok');
   }

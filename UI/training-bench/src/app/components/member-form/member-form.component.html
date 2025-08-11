@@ -14,11 +14,11 @@
    </mat-form-field>
    <mat-form-field>
     <mat-label>email</mat-label>
-    <input matInput [(ngModel)]="email.value" name="Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required #email>
+    <input matInput [(ngModel)]="email.value" name="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required #email>
   </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
-    <button class="center" matButton="filled" (click)="openSnackBar('Ok: '+ name.value, email.value)">REGISTER</button>    
+    <button class="center" matButton="filled" (click)="createMember(name.value, email.value)">REGISTER</button>    
   </mat-card-actions>
 </mat-card>
 

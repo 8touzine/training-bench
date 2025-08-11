@@ -15,7 +15,11 @@ export class MemberRepositoryService {
 
   public createMember(member: Member){
     let url = this.baseUrl + ApiPaths.create;
-    return this.httpClient.post<Member>(url, member)
+    const body = {
+      nom: member.getName(),
+      email: member.getEmail()
+    }
+    return this.httpClient.post<Member>(url, body)
   }
 
 }
