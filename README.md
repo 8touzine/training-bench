@@ -17,8 +17,13 @@ The pipeline follows this flow:
 5. **Kafka Connect** pushes processed events into **Elasticsearch**.
 6. **Spring Boot API** queries Elasticsearch and serves data to the **Angular UI**.
 
+Todo:
+- "Update" and "delete" pipe still need to be finished, 
+- Add workout sessions and experience data pipeline, 
+- Automate flink job jar deploymet
+
 ## Architecture Diagram
-![screenshot](overview.png)
+![screenshot](overview.png
 
 ---
 
