@@ -23,7 +23,7 @@ Todo:
 - Automate flink job jar deploymet
 
 ## Architecture Diagram
-![screenshot](overview.png
+![screenshot](overview.png)
 
 ---
 
