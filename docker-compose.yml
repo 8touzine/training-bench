@@ -136,7 +136,7 @@ services:
       - broker
       - elasticsearch  
       - postgres
-  UI:
+  ui:
     build:
       context: ./UI/training-bench/
       dockerfile: Dockerfile
