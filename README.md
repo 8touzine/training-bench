@@ -19,7 +19,7 @@ The pipeline follows this flow:
 
 Todo:
 - "Update" and "delete" pipe still need to be finished, 
-- Add workout sessions and experience data pipeline, 
+- Add workout sessions and exercises data pipeline, 
 - Automate flink job jar deploymet
 
 ## Architecture Diagram
