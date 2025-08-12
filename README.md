@@ -1,4 +1,3 @@
-![screenshot](overview.png)
 
 # Training Bench - Technical Data Pipeline Demo
 
@@ -19,7 +18,7 @@ The pipeline follows this flow:
 6. **Spring Boot API** queries Elasticsearch and serves data to the **Angular UI**.
 
 ## Architecture Diagram
-![Architecture Diagram](A_2D_digital_flowchart_illustrates_a_data_pipeline.png)
+![screenshot](overview.png)
 
 ---
 
@@ -28,7 +27,8 @@ The pipeline follows this flow:
 ### Prerequisites
 - Docker & Docker Compose installed
 - Gradle for building the Flink job
-- Node.js & npm for the Angular UI (optional for local dev)
+- Node.js & npm for the Angular UI (optional for local dev
+- Java 17
 
 ### Build the Flink Job
 Before starting the stack, you must build and export the Flink job JAR.
@@ -65,7 +65,7 @@ This will start the following services:
 - **dbz** → Debezium Kafka Connect for CDC
 - **jobmanager** & **taskmanager** → Apache Flink cluster
 - **elasticsearch** → Elasticsearch node
-- **kibana** → Kibana dashboard
+- **kibana** → Elastic dashboard
 - **api** → Spring Boot API
 - **ui** → Angular front-end
 
@@ -82,10 +82,7 @@ This will start the following services:
 ---
 
 ## Notes
-- The **UI will not display events** until the Flink job is uploaded and running.
-- The API is configured in `environment.ts` of the Angular project to call `http://api:8084/api` when running inside Docker.
-- When developing locally without Docker, you can switch it back to `http://localhost:8084/api`.
-
+- The **UI will not display events** until the Flink job is uploaded and running (and elastic filled).
 ---
 
 ## License
