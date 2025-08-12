@@ -26,7 +26,7 @@ Todo:
 ![screenshot](overview.png)
 
 ## Screenshot (UI)
-![screenshot](screenshot-UI.PNG)
+![screenshot](screenshot-ui.PNG)
 ---
 
 ## Setup
