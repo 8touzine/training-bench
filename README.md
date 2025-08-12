@@ -25,6 +25,8 @@ Todo:
 ## Architecture Diagram
 ![screenshot](overview.png)
 
+## Screenshot (UI)
+![screenshot](screenshot-UI.PNG)
 ---
 
 ## Setup
